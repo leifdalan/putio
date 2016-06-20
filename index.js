@@ -4,7 +4,9 @@ const config = process.env.NODE_ENV === 'production'
   ? process.env
   : require('./local');
 const app = express();
-
+var bodyParser = require('body-parser');
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 const {
   MAILGUN_USER,
   MAILGUN_PASS,
@@ -15,7 +17,7 @@ app.get('/', function (req, res) {
   res.send('Hello World!');
 });
 app.post('/complete', function (req, res) {
-  console.error('req.body', req);
+  console.error('req.body', req.body);
   // console.error('req', req);
   var transporter
     , message;
