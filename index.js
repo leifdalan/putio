@@ -32,9 +32,12 @@ app.post('/complete', function (req, res) {
   message = {
     from: 'YourServer ',
     to: 'leifdalan@gmail.com', // comma separated list
-    subject: 'Subject Line',
+    subject: `${res.body.name} Completed!`,
     text: 'Text contents.',
-    html: '<b>html contents.</b>'
+    html: `
+      <h1>${res.body.name} Completed!</h1>
+      <p>It took this many seconds: ${res.body.seconds_seeding}</p>
+    `
   };
   transporter.sendMail(message, function(error, info){
     if (error) {
