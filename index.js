@@ -5,8 +5,11 @@ const config = process.env.NODE_ENV === 'production'
   : require('./local');
 const app = express();
 
-const {MAILGUN_USER }= config;
-const {MAILGUN_PASS} = config;
+const {
+  MAILGUN_USER,
+  MAILGUN_PASS,
+  PORT,
+} = config;
 
 app.get('/', function (req, res) {
   res.send('Hello World!');
@@ -40,6 +43,6 @@ app.post('/complete', function (req, res) {
   });
 });
 
-app.listen(3000, function () {
+app.listen(PORT, function () {
   console.log('Example app listening on port 3000!');
 });
