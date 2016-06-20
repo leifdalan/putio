@@ -15,6 +15,7 @@ app.get('/', function (req, res) {
   res.send('Hello World!');
 });
 app.post('/complete', function (req, res) {
+  console.error('req.body', req.body);
   // console.error('req', req);
   var transporter
     , message;
