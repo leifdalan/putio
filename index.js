@@ -5,6 +5,9 @@ const config = process.env.NODE_ENV === 'production'
   : require('./local');
 const app = express();
 
+const {MAILGUN_USER }= config;
+const {MAILGUN_PASS} = config;
+
 app.get('/', function (req, res) {
   res.send('Hello World!');
 });
